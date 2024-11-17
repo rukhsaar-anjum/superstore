@@ -5,8 +5,9 @@
 }}
 
 SELECT
-    product_id,
-    product_name,
-    category,
-    sub_category
+    order_id,
+    order_date,
+    sales,
+    quantity,
+    profit
 FROM analytics.superstore.orders
