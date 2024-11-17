@@ -13,4 +13,4 @@ SELECT
     state_or_province,
     postal_code,
     region
-FROM ORDERS
+FROM analytics.superstore.ORDERS
