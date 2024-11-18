@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: superstore
+    database: analytics
+    schema: superstore
+    tables:
+      - name: orders
+      - name: people
+      - name: returns
