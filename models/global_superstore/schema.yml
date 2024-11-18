@@ -1,0 +1,17 @@
+version: 2
+
+models:
+    - name: customers_dim
+      description: "Contains customer details"
+      columns:
+          - name: customer_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: dates_dim
+
+    - name: products_dim
+
+    - name: sales_fact
