@@ -1,21 +1,21 @@
-{{
-    config(
-        materialized = "table"
+{{ config(materialized="table") }}
+
+with
+    base as (
+        select
+            orders.order_id,
+            to_date(order_date, 'dd-mm-yyyy') as order_date,
+            product_id,
+            customer_id,
+            sales,
+            quantity,
+            profit,
+            discount,
+            returned as is_returned
+        from {{ source("superstore", "orders") }}
+        left join
+            {{ source("superstore", "returns") }} on orders.order_id = returns.order_id
     )
-}}
 
-WITH base AS (
-    SELECT
-        orders.order_id,
-        to_date(order_date, 'dd-mm-yyyy') as order_date,
-        sales,
-        quantity,
-        profit,
-        discount,
-        returned as is_returned
-    FROM {{source ('superstore','orders')}}
-    LEFT JOIN {{source ('superstore','returns')}}
-        ON orders.order_id = returns.order_id
-)
-
-SELECT * FROM base
+select *
+from base
