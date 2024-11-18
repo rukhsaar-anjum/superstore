@@ -13,7 +13,10 @@ with sales as (
 )
 
 select
-    *,
+    order_month,
+    product_category,
+    total_sales,
+    total_returned,
  --   (total_profit/total_sales)*100 as profit_margin,
     lag(total_sales) over (order by order_month) as previous_month_sales,
     lag(total_sales) over (order by product_category) as previous_category_sales,
