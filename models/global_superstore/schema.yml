@@ -1,38 +1,166 @@
 version: 2
 
 models:
-    - name: customers_dim
-      description: "Contains customer details"
-      columns:
-          - name: customer_id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+  - name: customers_dim
+    description: Dimensions table containing customer details.
+    columns:
+      - name: customer_id
+        description: The primary key for this table.
+        tests:
+          - unique
+          - not_null
 
-    - name: products_dim
-      description: "Contains customer details"
-      columns:
-          - name: product_id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+      - name: customer_name
+        description: Name of the customers.
 
-    - name: sales_fact
+      - name: segment
+        description: Segment the customer belongs to.
 
-    - name: customers_dim
+      - name: country_or_region
+        description: Country or region of the customer.
 
-    - name: products_dim
+      - name: city
+        description: City of the customer.
 
-    - name: sales_fact
+      - name: state_or_province
+        description: State or province of the customer.
 
-    - name: mart_sales_over_time
+      - name: postal_code
+        description: Customer's postal code.
 
-    - name: mart_sales_returns_per_category
+      - name: region
+        description: Region the customer belongs to.
 
-    - name: mart_top_sellers
+  - name: products_dim
+    description: Dimensions table containing product details.
+    columns:
+      - name: product_id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
 
-    - name: mart_month_on_month_growth
+      - name: product_name
+        description: Name of the product.
 
-    - name: mart_revenue_per_sale
+      - name: category
+        description: Category the product belongs to.
+
+      - name: sub_category
+        description: Sub-category the product belongs to.
+
+  - name: sales_fact
+    description: Fact table containing sales and order details.
+    columns:
+      - name: order_id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
+
+      - name: order_date
+        description: Date when order was placed.
+
+      - name: product_id
+        description: Foreign key that indicates the unique product id.
+
+      - name: customer_id
+        description: Foreign key that indicates the unique customer id.
+
+      - name: sales
+        description: Sales amount.
+
+      - name: quantity
+        description: Number of units ordered.
+
+      - name: profit
+        description: Profit amount on the order.
+
+      - name: discount
+        description: Discount percentage on the order.
+
+      - name: is_returned
+        description: True if the order was returned.
+
+  - name: mart_sales_over_time
+    description: Total sales amount, profit and profit margin per year, month, week.
+    columns:
+      - name: order_year
+        description: Year of order derived from order date.
+
+      - name: order_month
+        description: Month of order derived from order date.
+
+      - name: order_week
+        description: Week of the order derived from order_date.
+
+      - name: total_sales
+        description: Sum of total sales amount.
+
+      - name: total_profit
+        description: Sum of total profit.
+
+      - name: profit_margin
+        description:
+          The amount by which revenue from sales exceeds product cost.
+          Calculated as (total_profit / total_sales) * 100.
+
+  - name: mart_sales_returns_per_category
+    description: Answers the questions sales per product category and returns per product category.
+    columns:
+      - name: order_month
+        description: Month of the order. Derived from order date.
+
+      - name: product_category
+        description: Category the product belongs to.
+
+      - name: total_sales
+        description: Sum of total sales amount.
+
+      - name: total_returned
+        description: Number of orders that were returned.
+
+  - name: mart_top_sellers
+    description: Answers the question which are the top selling states and regions.
+    columns:
+      - name: state_or_province
+        description: State or province of the customer.
+
+      - name: region
+        description: Region the customer belongs to.
+
+      - name: total_sales
+        description: Sum of total sales amount per state and region.
+
+  - name: mart_month_on_month_change
+    description: Answers the questions Month on month change in sales and sales growth by product category.
+    columns:
+      - name: order_month
+        description: Month of the order. Derived from order date.
+
+      - name: total_sales
+        description: Sum of total sales amount.
+
+      - name: month_on_month_change_pct
+        description: The percentage change in sales comparing each month from the previous month.
+
+  - name: mart_revenue_per_sale
+    description: Answers the questions average revenue per sale.
+    columns:
+      - name: order_month
+        description: Month of the order. Derived from order date.
+
+      - name: avg_revenue_per_sale
+        description: Average revenue per sale.
+
+  - name: mart_sales_growth
+    description: Answers the questions sales growth per product category.
+    columns:
+      - name: order_month
+        description: Month of the order. Derived from order date.
+
+      - name: product_category
+        description: Category of the product.
+
+      - name: sales_growth_pct
+        description: Percentage growth in sales from the previous month per product category.

@@ -13,5 +13,8 @@ with
         order by total_sales desc
     )
 
-select state_or_province, region, total_sales
+select 
+    state_or_province, 
+    region, 
+    total_sales
 from top_performers
