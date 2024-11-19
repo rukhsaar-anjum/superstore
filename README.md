@@ -15,3 +15,6 @@ My reasoning for using multiple models to calculate the given metrics instead of
 2. Helps in easier testing and debugging in case of issues.
 3. Easily understandable by business users.
 4. Can be used directly in reports/dashboards for specific analysis.
+
+I have added tests and documentation to ensure data quality and understandable models by business.
+You can find them here: https://github.com/rukhsaar-anjum/superstore/blob/main/models/global_superstore/schema.yml
