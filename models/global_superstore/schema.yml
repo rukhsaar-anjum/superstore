@@ -44,7 +44,7 @@ models:
         description: Name of the product.
 
       - name: category
-        description: Category the product belongs to.
+        description: '{{ doc("product_category")}}'
 
       - name: sub_category
         description: Sub-category the product belongs to.
@@ -89,7 +89,7 @@ models:
         description: Year of order derived from order date.
 
       - name: order_month
-        description: Month of order derived from order date.
+        description: '{{ doc("order_month")}}'
 
       - name: order_week
         description: Week of the order derived from order_date.
@@ -109,10 +109,10 @@ models:
     description: Answers the questions sales per product category and returns per product category.
     columns:
       - name: order_month
-        description: Month of the order. Derived from order date.
+        description: '{{ doc("order_month")}}'
 
       - name: product_category
-        description: Category the product belongs to.
+        description: '{{ doc("product_category")}}'
 
       - name: total_sales
         description: Sum of total sales amount.
@@ -136,7 +136,7 @@ models:
     description: Answers the questions Month on month change in sales and sales growth by product category.
     columns:
       - name: order_month
-        description: Month of the order. Derived from order date.
+        description: '{{ doc("order_month")}}'
 
       - name: total_sales
         description: Sum of total sales amount.
@@ -148,7 +148,7 @@ models:
     description: Answers the questions average revenue per sale.
     columns:
       - name: order_month
-        description: Month of the order. Derived from order date.
+        description: '{{ doc("order_month")}}'
 
       - name: avg_revenue_per_sale
         description: Average revenue per sale.
@@ -157,10 +157,10 @@ models:
     description: Answers the questions sales growth per product category.
     columns:
       - name: order_month
-        description: Month of the order. Derived from order date.
+        description: '{{ doc("order_month")}}'
 
       - name: product_category
-        description: Category of the product.
+        description: '{{ doc("product_category")}}'
 
       - name: sales_growth_pct
         description: Percentage growth in sales from the previous month per product category.
