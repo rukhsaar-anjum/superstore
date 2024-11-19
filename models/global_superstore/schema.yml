@@ -10,8 +10,29 @@ models:
                 - unique
                 - not_null
 
-    - name: dates_dim
+    - name: products_dim
+      description: "Contains customer details"
+      columns:
+          - name: product_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: sales_fact
+
+    - name: customers_dim
 
     - name: products_dim
 
     - name: sales_fact
+
+    - name: mart_sales_over_time
+
+    - name: mart_sales_returns_per_category
+
+    - name: mart_top_sellers
+
+    - name: mart_month_on_month_growth
+
+    - name: mart_revenue_per_sale
