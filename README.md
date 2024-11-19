@@ -1,15 +1,17 @@
-Welcome to your new dbt project!
+**DBT Case Study**
 
-### Using the starter project
+I have split the given flattened data (order, people and returns) into fact (sales_fact) and dimensions tables (products_dim, customers_dim, dates_dim).
 
-Try running the following commands:
-- dbt run
-- dbt test
+My reasoning for using star schema:
+1. Easy to understand.
+2. Easy for ad-hoc querying.
+3. Easy to join between the tables and makes queries run faster even for large datasets.
+4. Easy to maintain and extend.
+5. Faster data access.
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+My reasoning for using multiple models to calculate the given metrics instead of one single model:
+1. The given metrics involves different calculations and aggregations, so breaking them down into individual models will help to maintain them.
+2. Helps in easier testing and debugging in case of issues.
+3. Easily understandable by business users.
+4. Can be used directly in reports/dashboards for specific analysis.
